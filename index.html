@@ -352,6 +352,44 @@ img.av{background:linear-gradient(180deg,#f1f3f6 0%,#c4cbd4 100%)}
 .gm .rk small{font:600 12px var(--f-body)}
 @media (max-width:640px){.gm{grid-template-columns:minmax(0,1fr) auto 64px}.gm .br{grid-column:1/-1;grid-row:2}}
 @media (max-width:640px){.kpis.gk .kpi b{font-size:28px}}
+.gsec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:20px 2px 0;flex-wrap:wrap}
+.gsec h4{margin:0;font:800 19px var(--f-display);text-transform:uppercase;letter-spacing:.03em;color:var(--on-dark)}
+.gsec span{color:var(--dim);font-size:13px}
+.gtops{margin-top:10px}.gtops .gsec{margin:14px 2px 10px}
+.tops.t2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:640px){.tops.t2{grid-template-columns:1fr}}
+.cmpcta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0 4px;padding:14px 16px;border:1px solid #2a2f36;border-radius:14px;background:var(--band)}
+.cmpcta span{color:var(--dim);font-size:14px}
+.btn-cmp{display:inline-block;background:var(--on-dark);color:var(--ink);font:800 17px var(--f-display);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:10px 18px;border-radius:999px}
+.btn-cmp:focus-visible,.cmplink a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.cmplink{margin:18px 2px 0}.cmplink a{color:var(--on-dark);font-weight:700}
+.cmpsel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:6px 0 4px}
+.cmpsel .cs{display:flex;flex-direction:column;gap:6px;color:var(--dim);font-size:13px;font-weight:600}
+.cmpsel select{background:var(--band2);color:var(--on-dark);border:1px solid #333a42;border-radius:10px;padding:10px;font:600 15px var(--f-body);width:100%}
+@media (max-width:640px){.cmpsel{grid-template-columns:1fr}}
+.cmpt{margin-top:16px;background:var(--paper);color:var(--ink);border-radius:16px;padding:6px 18px 14px}
+.cmpt .cr{display:grid;grid-template-columns:minmax(150px,1fr) repeat(var(--n),minmax(0,1.3fr));gap:4px 14px;align-items:center;padding:9px 0;border-top:1px solid var(--hair)}
+.cmpt.c2{--n:2}.cmpt.c3{--n:3}
+.cmpt .cr.ch{border-top:0;padding:12px 0 8px;align-items:end}
+.cmpt .cl{font:700 15px var(--f-body)}.cmpt .cl small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.cmpt .cv{min-width:0;padding:4px 8px;border-radius:8px}
+.cmpt .cv b{font:800 22px/1.1 var(--f-display);white-space:nowrap}
+.cmpt .cv .nd{color:var(--muted)}
+.cmpt .cv .cb{display:block;height:6px;border-radius:999px;background:#c3cbd4;margin-top:5px;overflow:hidden}
+.cmpt .cv .cb i{display:block;height:100%;background:#59616b;border-radius:999px}
+.cmpt .cv.best{background:#dfe5ec;border-left:3px solid var(--ink);border-radius:0 8px 8px 0;padding-left:5px}
+.cmpt .cv.best .cb i{background:var(--ink)}
+.cmpt .cp{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.cmpt .cp .cpi,.cmpt .cp .ph0{width:56px;height:72px;object-fit:cover;object-position:50% 12%;border-radius:10px;flex:none;background:#c3cbd4;display:flex;align-items:center;justify-content:center}
+.cmpt .cp span{min-width:0}.cmpt .cp b{display:block;font:800 21px/1.05 var(--f-display);text-transform:uppercase;overflow-wrap:anywhere}
+.cmpt .cp small{color:var(--muted);font-size:12px}
+.cmpt .cgh{margin:18px 0 4px;font:800 20px var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.cmpt .cgh small{font:500 13px var(--f-body);text-transform:none;letter-spacing:0;color:var(--muted);margin-left:6px}
+.cmpm{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px}
+.cmpm button{font:700 14px var(--f-body);padding:7px 14px;border-radius:999px;border:1px solid #9aa4af;background:transparent;color:var(--ink);cursor:pointer}
+.cmpm button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:640px){.cmpt{padding:4px 12px 12px}.cmpt .cr{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px 8px}.cmpt .cr .cl{grid-column:1/-1}.cmpt .cr.ch .cl{display:none}
+ .cmpt .cv b{font-size:18px}.cmpt .cp{flex-direction:column;align-items:flex-start;gap:6px}.cmpt .cp b{font-size:16px}.cmpt .cp .cpi,.cmpt .cp .ph0{width:48px;height:60px}}
 .gnote{color:var(--dim);font-size:13px;margin:12px 2px 0}
 .anav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
 .anav a{color:var(--dim);text-decoration:none;font-weight:600}
@@ -578,6 +616,48 @@ const fmtPeso=v=>{const n_=num(String(v??"").replace(",","."));return n_?(Math.r
 const fmtAlt=v=>{const n=num(String(v??"").replace(",","."));if(!n)return "";const m=n>3?n/100:n;return m.toFixed(2).replace(".",",")+" m"};
 const capa=(a,cls)=>CAPAS[a.id]?`<img class="${cls}" src="${CAPAS[a.id]}" alt="${esc(a.nome)}">`:`<span class="ph0">${esc(String(a.nome||"?").slice(0,1))}</span>`;
 const copaGames=()=>list(played).filter(isCopa).sort((a,b)=>(a.iso||"").localeCompare(b.iso||""));
+function gpsTop(){if(!gpsGames().length)return "";const A=atlList().map(a=>({a,o:gpsTot(a.id)})).filter(x=>x.o.n);
+  const t5=(k,lb,fmt,sub)=>{const r=A.filter(x=>x.o[k]>0).sort((x,y)=>y.o[k]-x.o[k]||x.a.ordem-y.a.ordem).slice(0,5);
+    return `<div class="top5"><h4>${lb}</h4><ol>${r.map((x,i)=>`<li><span class="rk">${i+1}</span><a class="nm" href="#atleta-${esc(x.a.id)}" style="text-decoration:none">${av(x.a.id,x.a.nome,"av sm")}${esc(x.a.nome)}<small>${sub(x.o)}</small></a><b class="num">${fmt(x.o[k])}</b></li>`).join("")}</ol></div>`};
+  const nj=o=>o.n===1?"1 jogo":o.n+" jogos";
+  return `<div class="gtops"><div class="gsec dk"><h4>GPS · somando os jogos</h4><span>${gpsGames().length} ${gpsGames().length===1?"jogo monitorado":"jogos monitorados"}</span></div>
+   <div class="tops t2">${t5("dt","Top 5 · Distância percorrida",v=>fN(v/1000,1)+" km",o=>`${nj(o)} · ${fN(o.dt/o.n/1000,1)} km/jogo`)}${t5("spr","Top 5 · Sprints",v=>fN(v,0),o=>`${nj(o)} · ${fN(o.spr/o.n,1)}/jogo`)}</div></div>`}
+let CMPM="jogo";
+function viewCmpAtl(ids){const A=atlList(),byId=Object.fromEntries(A.map(a=>[a.id,a]));ids=ids.filter(i=>byId[i]).slice(0,3);
+  const games=copaGames(),slots=[0,1,2];
+  const sel=i=>`<label class="cs"><span>Atleta ${i+1}${i===2?" <small>(opcional)</small>":""}</span><select id="cmpSel${i}" data-cmpi="${i}"><option value="">${i===2?"— nenhum —":"Escolha um atleta"}</option>${POS.map(p=>{const rs=A.filter(a=>a.pos===p);return rs.length?`<optgroup label="${esc(POSP[p]||p)}">${rs.map(a=>`<option value="${esc(a.id)}"${ids[i]===a.id?" selected":""}>${esc(a.nome)}</option>`).join("")}</optgroup>`:""}).join("")}</select></label>`;
+  const top=`<section class="sec"><div class="sec-h"><h2>Comparar atletas</h2><span class="tag">Copa Paraíba 2026</span><span class="right"><a href="#atletas" style="color:inherit">← Voltar para Atletas</a></span></div>
+    <div class="cmpsel">${slots.map(sel).join("")}</div>`;
+  const P=ids.map(i=>byId[i]);
+  if(P.length<2)return top+`<div class="empty" style="margin-top:14px">Escolha pelo menos dois atletas para ver a comparação.</div></section>`;
+  const T=P.map(a=>tot(a,games)),G=P.map(a=>gpsTot(a.id)),hasGk=P.some(a=>a.pos==="Goleiro"),anyG=G.some(o=>o.n);
+  const nC=P.length;
+  // row: label, values (numbers or null), fmt, better: 1 higher, -1 lower, 0 none, sub
+  const row=(lb,vals,fmt,better,sub)=>{const nums=vals.map(v=>v==null||v===""?null:Number(v));const ok=nums.filter(v=>v!=null&&!isNaN(v));
+    const mx=ok.length?Math.max(...ok):0,mn=ok.length?Math.min(...ok):0,best=better===1?mx:better===-1?mn:null;
+    const uniq=better&&ok.length>1&&mx!==mn;
+    return `<div class="cr"><div class="cl">${lb}${sub?`<small>${sub}</small>`:""}</div>${nums.map((v,i)=>{const isB=uniq&&v===best;
+      return `<div class="cv${isB?" best":""}">${v==null||isNaN(v)?`<span class="nd">—</span>`:`<b class="num">${fmt(v,i)}</b>${better===1&&mx>0?`<span class="cb" aria-hidden="true"><i style="width:${Math.max(3,v/mx*100).toFixed(1)}%"></i></span>`:""}`}</div>`}).join("")}</div>`};
+  const txt=(lb,vals)=>`<div class="cr"><div class="cl">${lb}</div>${vals.map(v=>`<div class="cv">${v?`<b>${esc(v)}</b>`:`<span class="nd">—</span>`}</div>`).join("")}</div>`;
+  const altN=a=>{const n_=num(String(a.altura??"").replace(",","."));return n_?(n_>3?n_/100:n_):null},pesN=a=>{const n_=num(String(a.peso??"").replace(",","."));return n_||null};
+  const I=v=>fN(v,0),D1=v=>fN(v,1);
+  const head=`<div class="cr ch"><div class="cl"></div>${P.map(a=>`<a class="cp" href="#atleta-${esc(a.id)}">${capa(a,"cpi")}<span><b>${esc(a.nome)}</b><small>${esc(a.pos)}${idadeDe(a)?` · ${idadeDe(a)} anos`:""}</small></span></a>`).join("")}</div>`;
+  const perfil=`<h3 class="cgh">Perfil</h3>${txt("Posição",P.map(a=>a.pos))}${row("Idade",P.map(a=>idadeDe(a)||null),v=>v+" anos",0)}${row("Altura",P.map(altN),v=>v.toFixed(2).replace(".",",")+" m",0)}${row("Peso",P.map(pesN),v=>(Math.round(v*10)/10).toString().replace(".",",")+" kg",0)}${txt("Pé dominante",P.map(a=>a.pe))}`;
+  const copa=`<h3 class="cgh">Copa Paraíba <small>${games.length} ${games.length===1?"jogo disputado":"jogos disputados"} · minutos no tempo regulamentar</small></h3>
+    ${row("Jogos",T.map(t=>t.j),I,1)}${row("Titular",T.map(t=>t.tit),I,1)}${row("Minutos",T.map(t=>t.min),v=>v+"'",1)}${row("Minutos por jogo",T.map(t=>t.j?t.min/t.j:null),v=>Math.round(v)+"'",1)}
+    ${row("Gols",T.map(t=>t.gols),I,1)}${row("Assistências",T.map(t=>t.ast),I,1)}${row("Participações em gol",T.map(t=>t.gols+t.ast),I,1,"gols + assistências")}
+    ${row("Cartões amarelos",T.map(t=>t.ca),I,-1)}${row("Cartões vermelhos",T.map(t=>t.cv),I,-1)}${hasGk?row("Gols sofridos",P.map((a,i)=>a.pos==="Goleiro"?T[i].gs:null),I,-1,"só goleiros"):""}`;
+  const f=(o,k)=>!o.n?null:CMPM==="90"?(o.min?o[k]/o.min*90:null):CMPM==="tot"?o[k]:o[k]/o.n;
+  const lbm=CMPM==="90"?"por 90 minutos":CMPM==="tot"?"somando os jogos":"média por jogo";
+  const gps=anyG?`<h3 class="cgh">GPS <small>${lbm}</small></h3>
+    <div class="cmpm" role="group" aria-label="Como mostrar o GPS">${[["jogo","Média por jogo"],["90","Por 90 minutos"],["tot","Total"]].map(([k,l])=>`<button type="button" data-cmpm="${k}" aria-pressed="${CMPM===k}">${l}</button>`).join("")}</div>
+    ${row("Jogos com GPS",G.map(o=>o.n),I,1)}${row("Minutos com GPS",G.map(o=>o.n?o.min:null),v=>v+"'",1,"inclui acréscimos")}
+    ${row("Distância total",G.map(o=>f(o,"dt")),v=>fN(v/1000,2)+" km",1)}${row("Distância relativa",G.map(o=>o.n?o.dr:null),v=>D1(v)+" m/min",1,"metros por minuto")}
+    ${row("Alta intensidade",G.map(o=>f(o,"dai")),v=>I(v)+" m",1,"zona de velocidade 4")}${row("Distância em sprint",G.map(o=>f(o,"dspr")),v=>I(v)+" m",1,"zona de velocidade 5")}
+    ${row("Sprints",G.map(o=>f(o,"spr")),CMPM==="tot"?I:D1,1)}${row("Acelerações",G.map(o=>f(o,"ace")),CMPM==="tot"?I:D1,1)}${row("Desacelerações",G.map(o=>f(o,"des")),CMPM==="tot"?I:D1,1)}
+    ${row("Velocidade máxima",G.map(o=>o.n?o.vmax:null),v=>D1(v)+" km/h",1,"melhor marca")}`:"";
+  return top+`<div class="cmpt c${nC}">${head}${perfil}${copa}${gps}</div>
+    <p class="gnote">Fundo destacado com faixa à esquerda = melhor número entre os atletas escolhidos (nos cartões e gols sofridos, o menor). A barra compara com o maior valor da linha. “Por 90 minutos” ajuda a comparar quem entrou no decorrer do jogo com quem jogou tudo.</p></section>`}
 function viewAtletas(){
   const games=copaGames();
   const A=atlList();
@@ -603,18 +683,26 @@ function viewAtletas(){
     <label for="fpos">Posição</label><select id="fpos"><option value="todas">Todas</option>${POS.map(p=>`<option value="${p}"${FPOS===p?" selected":""}>${POSP[p]}</option>`).join("")}</select></div>`;
   return `<section class="sec"><div class="sec-h"><h2>Atletas</h2><span class="tag">Copa Paraíba 2026 · ${A.length} no elenco</span><span class="right">${games.length?`${games.length} ${games.length===1?"jogo disputado":"jogos disputados"} · toque no atleta para ver os números`:"A estreia é em 07/11 · toque no atleta para ver a ficha"}</span></div>
    <div class="tops">${top5("j","Top 5 · Jogos","")}${top5("min","Top 5 · Minutagem","'")}${top5("gols","Top 5 · Gols","")}${top5("ast","Top 5 · Assistências","")}</div>
+   ${gpsTop()}
+   <div class="cmpcta"><a class="btn-cmp" href="#comparar-atletas">Comparar atletas →</a><span>Escolha até 3 atletas e compare perfil, números da Copa e GPS lado a lado</span></div>
    ${ctl}${medias}${body}
    ${OWNER?ownerAtl():""}</section>`}
 const GPSM=[["dt","Distância total","m",0,"Metros percorridos no jogo"],["dr","Distância relativa","m/min",1,"Metros por minuto em campo"],["dai","Alta intensidade","m",0,"Metros na zona de velocidade 4"],["dspr","Distância em sprint","m",0,"Metros na zona de velocidade 5"],["spr","Sprints","",0,"Quantidade de sprints"],["ace","Acelerações","",0,"Quantidade de acelerações"],["des","Desacelerações","",0,"Quantidade de desacelerações"],["vmax","Velocidade máxima","km/h",1,"Pico de velocidade no jogo"]];
 const fN=(v,d)=>Number(v).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
 const gpsGames=()=>list(played).filter(g=>g.gps&&g.gps.atl&&Object.keys(g.gps.atl).length).sort((a,b)=>(a.iso||"").localeCompare(b.iso||""));
+function gpsTot(id){const mine=gpsGames().filter(g=>g.gps.atl[id]);const o={n:mine.length,min:0,dt:0,dai:0,dspr:0,spr:0,ace:0,des:0,vmax:0,drw:0};
+  mine.forEach(g=>{const x=g.gps.atl[id],m=num(x.min);o.min+=m;["dt","dai","dspr","spr","ace","des"].forEach(k=>o[k]+=num(x[k]));o.vmax=Math.max(o.vmax,num(x.vmax));o.drw+=num(x.dr)*m});
+  o.dr=o.min?o.drw/o.min:0;return o}
 function viewGps(a){const gs=gpsGames(),mine=gs.filter(g=>g.gps.atl[a.id]);
   if(!mine.length)return `<div class="panel" style="margin-top:16px"><h3>GPS</h3><p class="sub" style="margin:8px 0 0">${gs.length?`${esc(a.nome)} ainda não tem dados de GPS. Os dados aparecem aqui nos jogos em que ele atuar com o colete.`:"Os dados de GPS aparecem aqui assim que forem lançados."}</p></div>`;
-  const V=g=>g.gps.atl[a.id],n=mine.length,sum=k=>mine.reduce((t,g)=>t+num(V(g)[k]),0),mn=sum("min");
+  const V=g=>g.gps.atl[a.id],n=mine.length,o=gpsTot(a.id);
   const k=(lb,v,sub)=>`<div class="kpi"><span>${lb}</span><b class="num">${v}</b>${sub?`<i>${sub}</i>`:""}</div>`;
-  const md=n===1?"no jogo":`média em ${n} jogos`;
-  const vmx=Math.max(...mine.map(g=>num(V(g).vmax)));
-  const head=`<div class="kpis a7 gk">${k("Distância",fN(sum("dt")/n/1000,1)+" km",md)}${k("Por minuto",fN(mn?mine.reduce((t,g)=>t+num(V(g).dr)*num(V(g).min),0)/mn:0,1)+" m",`distância relativa · ${n===1?"no jogo":"média"}`)}${k("Alta intensidade",fN(sum("dai")/n,0)+" m",md)}${k("Sprints",fN(sum("spr")/n,n===1?0:1),md)}${k("Acelerações",fN(sum("ace")/n,n===1?0:1),md)}${k("Desacelerações",fN(sum("des")/n,n===1?0:1),md)}${k("Vel. máxima",fN(vmx,1)+" km/h",n===1?"no jogo":"melhor marca")}${k("Minutos",mn+"'",`com GPS · ${n===1?"1 jogo":n+" jogos"}`)}</div>`;
+  const km=v=>fN(v/1000,1)+" km",d1=n===1?0:1;
+  const totais=`<div class="gsec"><h4>${n===1?"No jogo":`Somando os ${n} jogos`}</h4><span>${o.min}' com o GPS</span></div>
+   <div class="kpis a7 gk">${k("Distância total",km(o.dt),fN(o.dt,0)+" m")}${k("Alta intensidade",fN(o.dai,0)+" m","zona de velocidade 4")}${k("Distância em sprint",fN(o.dspr,0)+" m","zona de velocidade 5")}${k("Sprints",fN(o.spr,0),"")}${k("Acelerações",fN(o.ace,0),"")}${k("Desacelerações",fN(o.des,0),"")}${k("Distância relativa",fN(o.dr,1)+" m/min",n===1?"no jogo":"média ponderada pelos minutos")}${k("Vel. máxima",fN(o.vmax,1)+" km/h",n===1?"no jogo":"melhor marca")}</div>`;
+  const medias=n>1?`<div class="gsec"><h4>Média por jogo</h4><span>${n} jogos · ${Math.round(o.min/n)}' por jogo</span></div>
+   <div class="kpis a7 gk">${k("Distância",km(o.dt/n),"")}${k("Alta intensidade",fN(o.dai/n,0)+" m","")}${k("Distância em sprint",fN(o.dspr/n,0)+" m","")}${k("Sprints",fN(o.spr/n,1),"")}${k("Acelerações",fN(o.ace/n,1),"")}${k("Desacelerações",fN(o.des/n,1),"")}${k("Por 90 minutos",km(o.min?o.dt/o.min*90:0),"distância")}${k("Sprints em 90'",fN(o.min?o.spr/o.min*90:0,1),"")}</div>`:"";
+  const head=totais+medias+`<div class="gsec"><h4>Jogo a jogo</h4><span>mais recente primeiro</span></div>`;
   const cards=mine.slice().reverse().map(g=>{const x=V(g),all=Object.values(g.gps.atl),tm=team(g.adv);
     const rows=GPSM.map(([kk,lb,un,d,ds])=>{const v=num(x[kk]),vals=all.map(o=>num(o[kk])),mx=Math.max(...vals)||1,rk=1+vals.filter(o=>o>v).length;
       return `<div class="gm"><span class="l"><b>${lb}</b><small>${ds}</small></span><span class="br" aria-hidden="true"><i style="width:${Math.max(2,v/mx*100).toFixed(1)}%"${rk===1?' class="top"':""}></i></span><span class="v num">${fN(v,d)}${un?` <small>${un}</small>`:""}</span><span class="rk${rk===1?" top":""}">${rk}º <small>de ${all.length}</small></span></div>`}).join("");
@@ -644,7 +732,7 @@ function viewAtleta(id){const a0=ATL[id];if(!a0)return `<a class="back" href="#a
     <label>Peso (kg)<input id="bioPeso" inputmode="decimal" value="${fmtPeso(a.peso)?fmtPeso(a.peso).replace(" kg",""):""}" style="width:110px"></label>
     <label>Pé dominante<select id="bioPe" style="background:var(--bg);color:var(--on-dark);border:1px solid #333a42;border-radius:10px;padding:8px 10px"><option value="">—</option>${["Direito","Esquerdo","Ambidestro"].map(o=>`<option${a.pe===o?" selected":""}>${o}</option>`).join("")}</select></label>
     <button class="btn" id="bioSave" data-id="${esc(id)}" type="button">Salvar ficha</button><span class="msg" id="bioMsg"></span></div></section>`:""}
-   <nav class="anav" aria-label="Outros atletas"><a href="#atleta-${esc(prv.id)}">← ${esc(prv.nome)}</a><a href="#atleta-${esc(nxt.id)}">${esc(nxt.nome)} →</a></nav></section>`}
+   <p class="cmplink"><a href="#comparar-atletas/${esc(a.id)}">Comparar ${esc(a.nome)} com outro atleta →</a></p><nav class="anav" aria-label="Outros atletas"><a href="#atleta-${esc(prv.id)}">← ${esc(prv.nome)}</a><a href="#atleta-${esc(nxt.id)}">${esc(nxt.nome)} →</a></nav></section>`}
 function ownerAtl(){return `<section class="owner"><h3>Elenco</h3><p>Adicione um atleta novo ou remova quem saiu do elenco. Os números dele nos jogos continuam guardados.</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input id="novoNome" placeholder="Nome do atleta" style="background:var(--bg);color:var(--on-dark);border:1px solid #333a42;border-radius:10px;padding:8px 10px;min-width:0;flex:1 1 180px">
   <select id="novoPos" style="background:var(--bg);color:var(--on-dark);border:1px solid #333a42;border-radius:10px;padding:8px 10px">${POS.map(p=>`<option>${p}</option>`).join("")}</select>
@@ -754,11 +842,12 @@ function parseImp(txt){let d;try{d=JSON.parse(String(txt).trim())}catch(e){retur
 
 /* ---------- roteamento ---------- */
 function route(){const h=location.hash.replace(/^#/,"");
-  const cur=h==="comparar"?"comparar":(h==="atletas"||h.startsWith("atleta-"))?"atletas":"inicio";["inicio","atletas","comparar"].forEach(k=>$("#tab-"+k).setAttribute("aria-current",k===cur?"page":"false"));
+  const cur=h==="comparar"?"comparar":(h==="atletas"||h.startsWith("atleta-")||h.startsWith("comparar-atletas"))?"atletas":"inicio";["inicio","atletas","comparar"].forEach(k=>$("#tab-"+k).setAttribute("aria-current",k===cur?"page":"false"));
   const app=$("#app");
   if(DBSTATE==="none"){app.innerHTML=`<div class="sec"><div class="empty">Os jogos ficam guardados no Claude. Abra esta página com a sua conta do Claude conectada para ver os jogos.</div></div>`;return}
   if(!LOADED){app.innerHTML=`<div class="sec"><div class="empty">Carregando os jogos…</div></div>`;return}
   if(h.startsWith("jogo-"))app.innerHTML=viewGame(h.slice(5));
+  else if(h.startsWith("comparar-atletas"))app.innerHTML=viewCmpAtl(decodeURIComponent(h.slice(17)).split(",").filter(Boolean));
   else if(h==="comparar")app.innerHTML=viewCompare();
   else if(h==="atletas")app.innerHTML=viewAtletas();
   else if(h.startsWith("atleta-"))app.innerHTML=viewAtleta(h.slice(7));
@@ -767,6 +856,7 @@ function route(){const h=location.hash.replace(/^#/,"");
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0)});
 
 document.addEventListener("click",async e=>{const fl=e.target.closest("[data-filtro]");if(fl){FILTRO=fl.dataset.filtro;route();return}
+  const cm=e.target.closest("[data-cmpm]");if(cm){CMPM=cm.dataset.cmpm;const y=scrollY;route();scrollTo(0,y);return}
   const at=e.target.closest("[data-atab]");if(at){ATAB=at.dataset.atab;document.querySelectorAll("[data-atab]").forEach(b=>b.setAttribute("aria-selected",String(b===at)));document.querySelectorAll("[data-pane]").forEach(p=>p.hidden=p.dataset.pane!==ATAB);return}
   if(e.target.id==="ytSave"||e.target.id==="ytDel"){const b=e.target,del=b.id==="ytDel",v=del?"":$("#ytIn").value.trim();
     if(!del&&!ytOk(v)){$("#ytMsg").textContent="Esse link não é do YouTube. Copie o endereço do vídeo (começa com https://www.youtube.com ou https://youtu.be).";$("#ytMsg").className="msg err";return}
@@ -793,7 +883,7 @@ const p=e.target.closest("[data-pick]");if(p){const id=p.dataset.pick;SEL.has(id
     try{if(!r.doc.elenco&&GAMES[r.id]&&GAMES[r.id].elenco)r.doc.elenco=GAMES[r.id].elenco;if(GAMES[r.id]&&GAMES[r.id].video&&!r.doc.video)r.doc.video=GAMES[r.id].video;if(GAMES[r.id]&&GAMES[r.id].formacao&&!r.doc.formacao)r.doc.formacao=GAMES[r.id].formacao;for(const a of r.novos){await DB.doc("atletas/"+a.id).set({nome:a.nome,pos:a.pos||"Atacante",ordem:Date.now()})}await DB.doc("jogos/"+r.id).set(r.doc);$("#impMsg").textContent="Jogo salvo.";location.hash="jogo-"+r.id}catch(err){$("#impMsg").textContent="Não foi possível salvar ("+(err&&err.code||"erro")+"). Tente de novo.";$("#impMsg").className="msg err";e.target.disabled=false}}
   if(e.target.id==="del"){const b=e.target;if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Toque de novo para remover";setTimeout(()=>{b.dataset.arm="";b.textContent="Remover jogo"},4000);return}
     b.disabled=true;try{await DB.doc("jogos/"+b.dataset.id).delete();location.hash="inicio"}catch(err){$("#delmsg").textContent=" Não foi possível remover.";b.disabled=false}}});
-document.addEventListener("change",e=>{if(e.target.id==="adj"){ADJ=e.target.checked;route()}if(e.target.id==="ord"){ORD=e.target.value;route();$("#ord")&&$("#ord").focus()}if(e.target.id==="fpos"){FPOS=e.target.value;route();$("#fpos")&&$("#fpos").focus()}});
+document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.cmpi!=null){const v=[0,1,2].map(i=>{const el=document.getElementById("cmpSel"+i);return el?el.value:""});const ids=[...new Set(v.filter(Boolean))];history.replaceState(null,"","#comparar-atletas"+(ids.length?"/"+ids.join(","):""));route();return}if(e.target.id==="adj"){ADJ=e.target.checked;route()}if(e.target.id==="ord"){ORD=e.target.value;route();$("#ord")&&$("#ord").focus()}if(e.target.id==="fpos"){FPOS=e.target.value;route();$("#fpos")&&$("#fpos").focus()}});
 document.addEventListener("input",e=>{if(e.target.id==="imp"){const r=parseImp(e.target.value),pv=$("#impPrev"),bt=$("#impSave");
   if(!e.target.value.trim()){pv.textContent="";bt.disabled=true;return}
   if(r.err){pv.textContent=r.err;bt.disabled=true;return}
