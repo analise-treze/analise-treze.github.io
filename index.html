@@ -476,7 +476,7 @@ const isCopa=g=>/copa\s*para[ií]ba/i.test(g.comp||"");
 /* ---------- componentes ---------- */
 function gcard(g,next){const t=team(g.adv),r=res(g),home=g.mando!=="fora";
   const L=`<div class="t"><img src="${CR.treze}" alt=""><span>Treze</span></div>`,sn=shortN(g.adv),R=`<div class="t">${t.img?`<img class="adv" src="${t.img}" alt="">`:""}<span${sn.length>9?' class="lg"':""}>${esc(sn)}</span></div>`;
-  const mid=played(g)?`<div class="sc num">${esc(g.gt)}<i>×</i>${esc(g.ga)}</div>`:`<div class="when">${esc(g.hora||"—")}<small>${esc((g.dat||"").slice(0,5))}</small></div>`;
+  const mid=played(g)?`<div class="sc num">${esc(home?g.gt:g.ga)}<i>×</i>${esc(home?g.ga:g.gt)}</div>`:`<div class="when">${esc(g.hora||"—")}<small>${esc((g.dat||"").slice(0,5))}</small></div>`;
   const chip=r?`<span class="chip ${r}">${RESN[r]}</span>`:(next?`<span class="chip next">Próximo jogo</span>`:`<span class="chip a">A jogar</span>`);
   const tag="a";
   return `<${tag} class="gcard${t.white?" white":""}" style="--adv:${t.cor}" href="#jogo-${esc(g.id)}">
@@ -548,7 +548,7 @@ function golsVid(g){if(!g.golsVideo)return "";const src=absV(g.golsVideo),po=g.g
 function viewGame(id){const g=GAMES[id];if(!g)return `<a class="back" href="#inicio">← Jogos</a><div class="sec"><div class="empty">${LOADED?"Este jogo não foi encontrado. Ele pode ter sido removido.":"Carregando…"}</div></div>`;
   const t=team(g.adv),r=res(g),s=st(g),home=g.mando!=="fora",G={...g,id};
   const L=`<div class="t"><img src="${CR.treze}" alt=""><span>Treze</span></div>`,R=`<div class="t">${t.img?`<img class="adv" src="${t.img}" alt="">`:""}<span>${esc(g.adv)}</span></div>`;
-  const sc=played(g)?`<div class="sc num">${esc(g.gt)}<i>–</i>${esc(g.ga)}</div>`:`<div class="sc">vs</div>`;
+  const sc=played(g)?`<div class="sc num" aria-label="${esc(home?`Treze ${g.gt} × ${g.ga} ${g.adv}`:`${g.adv} ${g.ga} × ${g.gt} Treze`)}">${esc(home?g.gt:g.ga)}<i>–</i>${esc(home?g.ga:g.gt)}</div>`:`<div class="sc">vs</div>`;
   const kp=(a,b,c)=>`<div class="kpi"><span>${a}</span><b class="num">${b}</b>${c?`<i>${c}</i>`:""}</div>`;
   const pair=(a,b)=>a==null?"—":`${f1(a)} × ${f1(b)}`;
   const bola=g.bola?`<div class="bola">${[["1","1º tempo"],["2","2º tempo"],["jogo","Jogo todo"]].filter(x=>g.bola[x[0]]).map(([k,n])=>{const b=g.bola[k];return `<div><b>${n}</b>Bola rolando ${f1(b[0])}% · ${f1(b[1])} min<br>Bola parada ${f1(b[2])}% · ${f1(b[3])} min</div>`}).join("")}</div>`:"";
@@ -796,13 +796,13 @@ const MET=[
 function viewCompare(){const pl=list(played);
   if(!SEL_INIT&&pl.length){pl.forEach(g=>SEL.add(g.id));SEL_INIT=true}
   const gs=pl.filter(g=>SEL.has(g.id));
-  const pick=`<div class="pick">${pl.map(g=>{const t=team(g.adv);return `<button type="button" data-pick="${esc(g.id)}" aria-pressed="${SEL.has(g.id)}">${t.img?`<img src="${t.img}" alt="">`:""}<span>${esc(g.adv)}</span><span class="s num">${esc(g.gt)}×${esc(g.ga)}</span></button>`}).join("")}</div>
+  const pick=`<div class="pick">${pl.map(g=>{const t=team(g.adv);return `<button type="button" data-pick="${esc(g.id)}" aria-pressed="${SEL.has(g.id)}">${t.img?`<img src="${t.img}" alt="">`:""}<span>${esc(g.adv)}</span><span class="s num">Treze ${esc(g.gt)}×${esc(g.ga)}</span></button>`}).join("")}</div>
    <div class="tools"><button class="lnk" data-all="1" type="button">Selecionar todos</button><button class="lnk" data-all="0" type="button">Limpar</button>
    <label><input type="checkbox" id="adj" ${ADJ?"checked":""}> Ajustar volumes para 90 minutos</label></div>`;
   if(gs.length<2)return `<section class="sec"><div class="sec-h"><h2>Comparar jogos</h2><span class="tag">Escolha dois ou mais</span></div>${pick}<div class="empty" style="margin-top:14px">Selecione pelo menos dois jogos para comparar.</div></section>`;
   const S=gs.map(g=>({g,s:st(g),t:team(g.adv),k:ADJ?90/cover(g):1}));
   const val=(x,fn,pct)=>{const v=fn(x.s);return v==null?null:(pct?v:v*x.k)};
-  const head=`<tr><th></th>${S.map(x=>`<th><div class="gh">${x.t.img?`<img src="${x.t.img}" alt="">`:""}<em class="num">${esc(x.g.gt)} × ${esc(x.g.ga)}</em>${esc(x.g.adv)}<small>${esc([x.g.comp,x.g.dat].filter(Boolean).join(" · "))}${cover(x.g)!==90?` · ${cover(x.g)} min`:""}</small></div></th>`).join("")}</tr>`;
+  const head=`<tr><th></th>${S.map(x=>`<th><div class="gh">${x.t.img?`<img src="${x.t.img}" alt="">`:""}<em class="num">Treze ${esc(x.g.gt)} × ${esc(x.g.ga)}</em>${esc(x.g.adv)}<small>${esc([x.g.comp,x.g.dat].filter(Boolean).join(" · "))}${cover(x.g)!==90?` · ${cover(x.g)} min`:""}</small></div></th>`).join("")}</tr>`;
   const body=MET.map(([gn,items])=>`<tr class="g"><td colspan="${S.length+1}">${gn}</td></tr>`+items.map(([lb,fn,better,pct])=>{
     const vs=S.map(x=>val(x,fn,pct));let best=-1;
     if(better&&vs.filter(v=>v!=null).length>1){const ok=vs.map((v,i)=>[v,i]).filter(a=>a[0]!=null);const tgt=better>0?Math.max(...ok.map(a=>a[0])):Math.min(...ok.map(a=>a[0]));const w=ok.filter(a=>Math.abs(a[0]-tgt)<1e-9);if(w.length===1)best=w[0][1]}
